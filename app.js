@@ -3,6 +3,7 @@ const path = require("node:path");
 
 const app = express();
 const PORT = 3000;
+app.use(express.urlencoded({ extended: true }));
 
 // Set EJS as the template engine
 app.set("view engine", "ejs");
@@ -37,6 +38,22 @@ app.get("/new", (req, res) => {
   res.render("form", {
     title: "New Message"
   });
+});
+
+// Handle form submission
+
+app.post("/new", (req, res) => {
+
+  const messageText = req.body.messageText;
+  const messageUser = req.body.messageUser;
+
+  messages.push({
+    text: messageText,
+    user: messageUser,
+    added: new Date()
+  });
+
+  res.redirect("/");
 });
 
 // Start server

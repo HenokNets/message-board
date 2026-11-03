@@ -10,12 +10,39 @@
 
   <header>
     <h1><%= title %></h1>
-    <p>The message form will be implemented on Day 2.</p>
-
-    <a href="/" class="new-message-btn">
-      Back to messages
-    </a>
+    <p>Share a message with everyone.</p>
   </header>
+
+  <main>
+    <form method="POST" action="/new">
+
+      <div class="form-group">
+        <label for="messageUser">Your name</label>
+        <input
+          type="text"
+          id="messageUser"
+          name="messageUser"
+          placeholder="Enter your name"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="messageText">Your message</label>
+        <textarea
+          id="messageText"
+          name="messageText"
+          placeholder="Write your message..."
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit">Send Message</button>
+
+    </form>
+
+    <a href="/">Back to messages</a>
+  </main>
 
 </body>
 </html>

@@ -3,25 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title><%= title %></title>
+
   <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body>
 
   <header>
     <h1><%= title %></h1>
+
     <p>Welcome to my message board.</p>
+
     <a href="/new" class="new-message-btn">
       Write a message
     </a>
   </header>
 
   <main>
+
     <h2>Messages</h2>
 
     <div class="messages">
 
-      <% messages.forEach(message => { %>
+      <% messages.forEach((message, index) => { %>
 
         <article class="message-card">
 
@@ -30,14 +36,22 @@
           <p><%= message.text %></p>
 
           <small>
-            <%= message.added.toLocaleString() %>
+            Posted: <%= message.added.toLocaleString() %>
           </small>
+
+          <a
+            href="/message/<%= index %>"
+            class="open-btn"
+          >
+            Open Message
+          </a>
 
         </article>
 
       <% }) %>
 
     </div>
+
   </main>
 
 </body>

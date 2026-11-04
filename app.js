@@ -56,6 +56,21 @@ app.post("/new", (req, res) => {
   res.redirect("/");
 });
 
+app.get("/message/:id", (req, res) => {
+  const messageId = Number(req.params.id);
+
+  const message = messages[messageId];
+
+  if (!Number.isInteger(messageId) || !message) {
+    return res.status(404).send("Message not found");
+  }
+
+  res.render("message", {
+    title: "Message Details",
+    message: message
+  });
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
